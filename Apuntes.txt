@@ -1,0 +1,237 @@
+¿Que es una base de datos?
+R = Una base de datos es un repositorio de información donde se guardarán todos los datos de 
+nuestro software.
+La finalidad de una base de datos es consultar información, ingresar o modificar cualquiera de
+nuestros datos y que nuestros datos siempre estén guardados en nuestros programas.
+Es decir, cuando cerremos nuestra aplicación y la volvamos a abrir los datos continúen ahí.
+
+La tecnología que permite organizar los datos y representar la información esencial para un sistema de información se denomina Sistema Gestor de Base de Datos (SGBD) o por sus siglas en inglés (DBMS) Data Base Management System.
+Un DBMS es un software que encapsula los datos de una base de datos y nos proporciona una forma de almacenarlos, recuperarlos, editarlos, conservarlos y mucho más.
+Le pedimos a un DBMS que sea eficiente, que almacene datos de forma privada y segura, que maneje grandes cantidades de datos.
+Aunque una base de datos puede ser tan simple como un archivo de texto separado por comas (CSV), para aplicaciones robustas se recomienda utilizar DBMS como MySQL, PostgreSQL, MongoDB, Oracle, etc.
+
+Algunas ventajas de los DBMS son:
+
+* Están optimizados para almacenar y manipular grandes cantidades de datos.
+* Ofrecen mayor seguridad y administración de la información.
+* Permiten a varios usuarios acceder y manipular la información de forma concurrente.
+* Garantizan la integridad de los datos.
+
+Un DBMS puede contener muchas bases de datos.
+Los DBMS se pueden dividir en dos grandes grupos: relacionales (SQL) y no relacionales (NoSQL).
+
+Modelos de Bases de datos
+
+* Jerárquicas
+* De Red
+* Transaccionales 
+* Relacionales
+* Multidimencionales
+* Orientadas a objetos
+* Documentales
+* Deductivas
+
+Bases De Datos Relacionales:
+Son colecciones de datos organizados en un conjunto de tablas formalmente descritas, estas tablas se relacionan entre si.
+Las tablas de una base de datos relacional se organizan a través de identificadores. De este modo, cada tabla tiene un identificador único que es el que va a establecer su relación con el resto de tablas. 
+A su vez, estos identificadores hacen que sea más fácil organizar cada una de las tablas por separado.
+Los DBMS relacionales se caracterizan por modelar la información en tablas que se relacionan entre sí. Ejemplos son MySQL, MariaDB, PostgreSQL, SQLServer, Oracle, entre otros.
+
+Bases De Datos No Relacionales:
+Están diseñadas para modelos de datos con estructuras más específicas y que no necesitan ser relacionados con otros. 
+Cada entidad funciona de forma independiente y son mucho más sencillas que las relacionales.
+Se busca mejorar el rendimiento y se prioriza el acceso rápido por sobre la normalización e integridad de los datos. 
+En este tipo de modelos se requiere ahorrar poder computo para poder procesar la mayor cantidad de datos en el menor tiempo posible.
+Las bases de datos no relacionales pueden tener identificador único, pero este no se usará para relacionar unos registros con otros.
+Es documento que es un objeto con una clave y un valor para que el acceso a la información se pueda realizar de forma sencilla.
+Los DBMS no relacionales modelan la información de diferentes formas: documentos, llave-valor, grafos, entre otras. 
+Ejemplos de DBMS no relacionales son MongoDB, Redis, Apache Cassandra, Firebase entre otras.
+
+¿Cuándo utilizar SQL o NoSQL?:
+La elección del tipo de base de datos es algo muy importante y que no hay que tomarlo a la ligera. 
+La elección de un DBMS erróneo puede traer consecuencias fatales en el desarrollo de un proyecto, por lo que es muy importante dedicarle tiempo y ver qué tipo se adapta mejor con el modelo de nuestro proyecto.
+
+SQL:
+Las bases de datos SQL utilizan una estructura organizada y relacional.
+si queremos desarrollar una aplicación de tipo contable, de inventario o de información de clientes. 
+En este tipo de aplicaciones, normalmente habrá más de una tabla que tenga relación con el resto, por lo que una base de datos relacional será más útil y podrá representar mejor nuestra aplicación.
+Si tus datos tienen una estructura bien definida y poco probable que cambie con frecuencia, SQL, ya que permiten definir esquemas rigurosos que garantizan la integridad de los datos y evitan la introducción de datos erróneos o inconsistentes.
+
+NoSQL:
+Utilizan una estructura más flexible y escalable.
+Los datos que se vayan a almacenar no necesitan relacionarse unos con otros y además no tenemos certeza de que todos los datos tengan la misma estructura. 
+Si tu aplicación requiere una respuesta rápida y en tiempo real, estas suelen ser más eficientes que las bases de datos SQL en términos de rendimiento y escalabilidad en aplicaciones en tiempo real.
+Estas son más escalables que las bases de datos SQL y se adaptan mejor a grandes cantidades de datos no estructurados.
+Ejemplo: un BD en la que solo queramos almacenar las estadísticas de comportamiento de un usuario al visitar un sitio, o una BD para recolectar sus datos biométricos, esta información puede cambiar de una persona a otra.
+Ejemplo: las estadísticas de progreso de un videojuego también serían un buen ejemplo de modelo no relacional, ya que la información de un jugador a otro puede variar.
+Todos estos ejemplos almacenan la información y no la relacionan entre sí.
+
+Ambas tienen sus propias fortalezas y debilidades, y la elección de una depende de las necesidades específicas de la aplicación y el tipo de datos que deben almacenarse.
+
+¿Que es SQL?
+R = Es un lenguaje de consultas estructuradas.
+Los comandos de SQL se utilizan tanto para consultas interactivas para obtener información 
+de una base de datos relacional y para la recopilación de datos para los informes.
+Tendremos que ocupar el lenguaje SQL para poder hacer la creación de la base de datos,
+las diferentes consultas, modificaciones y eliminaciones.
+
+Para utilizar el lenguaje SQL necesitamos un gestor de base de Datos.
+Algunos gestores de BD son:
+
+* MYSQL
+* MICROSOFT SQL SERVER
+* ORACLE
+* MICROSOFT ACCESS
+* POSTGRESQL. 
+
+MYSQL es un gestor de BD donde vamos a interactuar con su interfaz grafica, escribiremos 
+diferentes lineas de codigo para hacer la creación, las consultas, las inserciones y 
+las eliminaciones de todos nuestros datos dentro de nuestra BD.
+
+COMANDOS
+// Crear DB
+sintaxis: create database name_BD
+ejemplo: 
+create database alumnos;
+
+Para poder ejecutar las consultas necesitas dar click en el rayito.
+
+// Para poder visualizar un registro de todas la DB que existen colocamos:
+sintaxis: show databases;
+
+// Antes de crear cualquier tabla es necesario saber que DB vamos a usar
+sintaxis: use DB_NAME;
+
+ejemplo:
+use alumnos;
+
+// Crear tabla en la DB
+sintaxis: CREATE TABLE name_table (
+    // columnas de la tabla 
+    sintaxis: [atributo] [tipo de dato] [longitud]
+    // llave primaria
+    El ID  es un identificador unico, es la llave primaria (primary key).
+    sintaxis: PRIMARY KEY (atributo, el id de la tabla)
+);
+
+Ejemplo:
+
+create table desarrolladores (
+	id int,
+    nombre varchar(255),
+    apellidos varchar(255),
+    PRIMARY KEY (id)
+);
+
+¿Cuantas tablas podemos crear?
+R = podemos crear las que queramos.
+
+// INGRESAR datos a la tabla
+sintaxis: INSERT INTO name_table (atributos...) VALUES (valores...);
+
+Ejemplo:
+INSERT INTO desarrolladores (nombre, apellidos) VALUES ("Daniel", "De La Cruz");
+
+El ID es un campo que se puede auto_incrementar, si es que colocamos el atributo en el campo ID.
+como ya creamos la tbala y por consiguiente los campos, necesitamos modificar el campo ID.
+
+// para modificar la tabla
+sintaxis: ALTER TABLE name_BD MODIFY COLUMN [campo] [tipo_de_dato] [atributo];
+Ejemplo: 
+ALTER TABLE desarrolladores MODIFY COLUMN id int auto_increment;
+Lo que se hace es que cada vez que se añadan registros el campo id se incrementara 
+de manera automatica.
+
+Para ejecutar una sola linea de comandos se usa Ctrl + enter.
+
+Para poder visualizar nuestra base de datos - tablas, colocamos 
+sintaxis: SHOW CREATE TABLE alumnos;
+
+// Copiamos el field de la consola, lo pegamos en el editor y quitamos los backticks.
+
+Veremos que se cambio la propiedad del campo id, se le agrego el atributo que añadimos hace 
+un momento.
+
+// Para mostrar los datos de una tabla
+sintaxis: SELECT * FROM name_table;
+ejemplo:
+SELECT * FROM desarrolladores;
+
+// algunas operaciones con SELECT
+
+// seleccionaremos y nos mostrara los datos de el registro en el cual contenga el id = 1
+sintaxis: SELECT * FROM name_table WHERE atributo = valor;
+ejemplo: 
+SELECT * FROM desarrolladores WHERE id = 1;
+// nos muestra id, nombre y apellido cuando el id sea = 1.
+
+// seleccionaremos y nos mostrara los datos de el registro en el cual contenga el nombre = 'Daniel'.
+sintaxis: SELECT * FROM name_table WHERE atributo = valor;
+ejemplo: 
+SELECT * FROM desarrolladores WHERE nombre = 'Daniel';
+
+
+// Ademas puedes colocar operadores logicos como AND OR NOT a la condición de los deseas consultar.
+
+// MODIFICAR datos
+// sintaxis: UPDATE name_table SET atributo  = valor WHERE atributo = dato;
+ejemplo:
+UPDATE alumnos SET nombre  = 'Gustavo' WHERE id = 1;
+
+// ELIMINAR datos 
+sintaxis: DELETE FROM name_table where id = valor;
+ejemplo:
+DELETE FROM alumnos where id = 3;
+
+Siempre necesitas un ID para modificar y eliminar datos.
+
+
+----------------
+Más operaciones con select
+
+--Limit, limita el numero de registros a consultar
+select * from contadores limit 2;
+nos muestra solo 2 registros, el registro con el id 1 y el id 2, y asi sucesivamente dependiendo del limite
+
+-- consultas con operadores logicos 
+ejemplos:
+select * from contadores where edad > 15;
+nos da los registros que sean mayores a 15 xd.
+
+select * from contadores where edad > 20 and email = "nerif478@gmail.com";
+nos muestrame el registro que cumpla los datos.
+
+select * from contadores where edad > 20 or email = "aldo4512@gmail.com";
+nos muestrame el-los registros que cumplan con las indicaciones.
+
+select * from contadores where email != "aldo4512@gmail.com";
+nos muestra todos los registros excepto el que contenga el correo mencionado.
+
+select * from contadores where edad between 15 and 20;
+registros entre 15 y 20
+
+select * from contadores where email like '%gmail%';
+una especie de busqueda, donde te devolvera los registros que aparezcan con la palabra gmail, independientemente que tenga los lados.
+
+select * from contadores where email like '%gmail';
+una especie de busqueda, donde te devolvera los registros que contengan la palabra gmail al final.
+
+select * from contadores order by edad asc;
+ordenas por edad ascendentemente.
+
+select * from contadores order by edad desc;}
+ordenas por edad descendentemente.
+
+select max(edad) as mayor from contadores;
+obtienes la edad maxima.
+
+select min(edad) as menor from contadores;
+obtienes la edad minima.
+
+select id, nombre from contadores;
+solo te muestra el id y nombre de los registros
+
+select id, nombre as name from contadores;
+cambias el nombre del campo, estamos cambiando de nombre a name.
+
+
