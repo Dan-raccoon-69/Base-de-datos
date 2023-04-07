@@ -82,12 +82,17 @@ create table codigoBarras (
     on update cascade
 );
 
-insert into codigoBarras (idProducto, serie) values 
-(1, "asldhve"),
-(16, "ncvatey");
+insert into codigoBarras (idProducto, serie) values (1, "asldhve");
+insert into codigoBarras (idProducto, serie) values (2, "ncvatey");
+insert into codigoBarras (idCodigoBarras,idProducto, serie) values (1, 3, "ahdfbns");
+insert into codigoBarras (idCodigoBarras,idProducto, serie) values (2, 4, "ajkncvi");
+insert into codigoBarras (idCodigoBarras,idProducto, serie) values (3, 5, "pfnsuau");
+insert into codigoBarras (idCodigoBarras,idProducto, serie) values (4, 6, "uyrbduw");
+insert into codigoBarras (idProducto, serie) values (7, "vcjkasyq");
+show columns from codigobarras;
 
-show columns from codigoBarras;
-
+select * from codigobarras;
+select * from producto;
 /* INGRESAR REGISTROS A LA TABLA ************************************/
 
 -- Creamos una tabla:
@@ -104,7 +109,7 @@ insert into categoria values (NULL, "Bebidas");
 insert into categoria (nombre) values ("Bebidas");
 -- 3. Si quieres colocar multiples registros en una sola linea, debes de separarlos por comas:
 insert into categoria (nombre) values ("Detergentes"), ("Galletas"), ("Chocolates"), ("Frituras");
-select * from categoria;
+select * from producto;
 /* Agregando datos a producto ***************************/
 insert into producto (idCategoria, nombre, precio, fechaVenta) values 
 (1, "Coca Cola", 20, "2000-05-31");
@@ -119,7 +124,7 @@ insert into producto (idCategoria, nombre, precio, fechaVenta) values
 (5, "Chetoos", 15, curdate());
 /* El metodo curdate te muestra guarda la fecha actual, asi no tienes que escribir la fecha varias veces*/
 select * from producto;
-select * from codigoBarras;
+select * from codigobarras;
 
 /* MODIFICAR REGISTRO EN LA TABLA ****************************/
 /* Vamos a modificar el dato de un campo de la tabla producto*/
@@ -171,3 +176,55 @@ select nombre, precio from producto order by nombre desc;
 select * from producto where nombre like 'Dor%';
 -- Esta sentencia nos muestra lo que va iniciando en la palabra y le da igual como termina
 select * from producto where nombre like '%tos';
+
+/* UNIR CAMPOS DE DIFERENTES TABLAS *************************/
+-- Uniendo tabla categoria con tabla producto
+-- Sintaxis: select * from tabla1 as 'alias' inner join tabla2 as 'alias' on 'la igualdad de como estan relacionadas las tablas en cada tabla' 
+select * from producto as p inner join categoria as c on p.idCategoria = c.idCategoria;
+-- Si solo queremos conocer campos determinados, no debemos de colocar el '*', solo coloca los campos que quieres visualizar.
+select p.nombre as nombreProducto, p.precio, c.nombre as nombreCategoria from producto as p inner join categoria as c on p.idCategoria = c.idCategoria;
+-- Podemos colocar la clausula where 
+select p.nombre as nombreProducto, p.precio, c.nombre as nombreCategoria from producto as p inner join categoria as c on p.idCategoria = c.idCategoria
+where p.precio >= 20;
+-- Uniendo el nombre del producto con su serial
+select p.nombre as nombreProducto, cb.serie as codigoSerial from producto as p inner join codigobarras as cb on p.idProducto = cb.idProducto;
+-- Uniendo el nombre del producto, codigobarras del producto y nombre de la categoria a la cual pertenece el producto.
+select p.nombre as nombreProducto, cb.serie as codigoSerial, c.nombre as nombreCategoria from producto as p inner join codigobarras as cb 
+on p.idProducto = cb.idProducto inner join categoria as c on c.idCategoria = p.idCategoria;
+
+/* VISTAS - VIEWS ********************************************/
+-- Una vista es una forma sencilla de guardar una consulta muy extensa que se estara utilizando muchas veces. 
+/* 
+Recordemos que anteriormente, creamos una consulta que nos mostraba ciertos datos de 3 tablas, esta consulta es larga, por 
+lo que se recomienda crear una vista cuya finalidad es almacenar toda la consulta haciendo que nuestro query no sea tan extenso.
+*/ 
+-- Crear vista, usaremos la consulta anterior creada
+-- Sintaxis: create view name_vista as consulta...
+create view vista3_tablas as 
+select p.nombre as nombreProducto, cb.serie as codigoSerial, c.nombre as nombreCategoria from producto as p inner join codigobarras as cb 
+on p.idProducto = cb.idProducto inner join categoria as c on c.idCategoria = p.idCategoria;
+-- Cada vez que queramos utilizar la vista, la llamamos de esta manera:
+select * from vista3_tablas;
+-- La vista se queda almacenada en la BD, la puedes utilizar cuando gustes.
+-- Ejemplo 2 de creacion de una vista, la anterior vista pero agregando el precio del producto.
+create view camposImportantes as 
+select p.nombre as nombreProducto, p.precio as precioProducto, cb.serie as codigoSerial, c.nombre as nombreCategoria from producto as p inner join codigobarras as cb 
+on p.idProducto = cb.idProducto inner join categoria as c on c.idCategoria = p.idCategoria;
+select * from camposImportantes;
+-- Para borrar una vista:
+-- drop view name_view;
+
+/* PROCEDIMIENTOS ALMACENADOS - STORED PROCEDURES **********************************/
+-- Son acciones que se van a ejecutar, acciones como inserciones, consultas, modificaciones, eliminaciones. 
+-- Son parecidos a las funciones en cualquier lenguaje de programación. 
+-- ejemplo1, realizando una consulta, donde el usuario da un id de la categoria y muestra los productos segun el id de la categoria:
+delimiter //
+create procedure mostrarProductoXcategorias (in id int)
+begin 
+	select * from producto where idCategoria = id;
+end //
+delimiter ;
+-- Llamada del procedimiento
+call mostrarProductoXcategorias(1);
+-- Para borrar un procedimiento:
+-- drop procedure name_procedure;
