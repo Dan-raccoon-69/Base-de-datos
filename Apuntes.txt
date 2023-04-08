@@ -234,4 +234,6 @@ solo te muestra el id y nombre de los registros
 select id, nombre as name from contadores;
 cambias el nombre del campo, estamos cambiando de nombre a name.
 
-
+/* RENOMBRAR UNA TABLA******************************************/
+sintaxis:
+rename table name_table to name_replace;

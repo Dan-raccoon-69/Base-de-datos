@@ -1,0 +1,1 @@
+Mi solución a diversos Ejercicios sobre consultas de una base de datos llamada Sakila. 

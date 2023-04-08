@@ -1,0 +1,1 @@
+Diversas consultas para el aprendizaje de SQL en una base de datos llamada Tienda.
