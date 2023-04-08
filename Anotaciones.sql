@@ -228,3 +228,10 @@ delimiter ;
 call mostrarProductoXcategorias(1);
 -- Para borrar un procedimiento:
 -- drop procedure name_procedure;
+
+/* RESPALDO DE UNA BASE DE DATOS ***************************************************/
+-- Respaldo: Server -> Data Export -> 'Selecciona BD a exportar' -> 'selecciona el tipo de exportacion (zip o archivo) y aceptar.
+
+/* RESTAURACION DE UNA BASE DE DATOS ***********************************************/
+-- Restauración: Server -> Data Import -> 'Selecciona el tipo de importanción (file o zip) y seleccionalo' -> 
+-- 'selecciona la BD o crea una nueva, seleccionala y dale a Start Import.'

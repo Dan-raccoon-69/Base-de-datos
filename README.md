@@ -1,1 +1,1 @@
----Prueba---
+Mis apuntes, ejercicios y códigos durante mi proceso de aprendizaje sobre las bases de datos SQL.
