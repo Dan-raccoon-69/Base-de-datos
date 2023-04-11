@@ -237,3 +237,8 @@ cambias el nombre del campo, estamos cambiando de nombre a name.
 /* RENOMBRAR UNA TABLA******************************************/
 sintaxis:
 rename table name_table to name_replace;
+
+/* INNER JOIN, LEFT JOIN AND RIGHT JOIN */
+Inner Join: Un campo debe encontrar en ambas tablas para poder unirse, une los datos que se encuentren en ambas tablas.
+Left Join: Mantiene los datos de la tabla 1 (left table) y une los datos que se encuentren en la tabla 2 (right table), si los datos no se encuentran en la tabla2, se mantendran los de la tabla 1 pero asignara NULL a los campos de la tabla resultante.
+Right Join: Mantiene los datos de la tabla 2 (right table) y une los datos que se encuentren en la tabla 1 (left table), si los datos no se encuentran en la tabla1, se mantendran los de la tabla 2 pero asignara NULL a los campos de la tabla resultante.
