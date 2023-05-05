@@ -242,3 +242,29 @@ rename table name_table to name_replace;
 Inner Join: Un campo debe encontrar en ambas tablas para poder unirse, une los datos que se encuentren en ambas tablas.
 Left Join: Mantiene los datos de la tabla 1 (left table) y une los datos que se encuentren en la tabla 2 (right table), si los datos no se encuentran en la tabla2, se mantendran los de la tabla 1 pero asignara NULL a los campos de la tabla resultante.
 Right Join: Mantiene los datos de la tabla 2 (right table) y une los datos que se encuentren en la tabla 1 (left table), si los datos no se encuentran en la tabla1, se mantendran los de la tabla 2 pero asignara NULL a los campos de la tabla resultante.
+
+/* NORMALIZAR UNA BD ***********************************************/
+Normalizar es el proceso de organizar los datos eficientemente dentro de una Base de Datos.
+En cada tabla se desea:
+* Conservar solo los datos relacionados entre si y reubicar los datos norelacionados en otra tabla.
+* Eliminar datos redundantes.
+
+/* BENEFICIOS DE LA NORMALIZACION ***********************************************/
+* Reducir espacio de almacenamiento
+* Reducir anomalias de LMD.
+* Mejorar el desempeño general de las consultas.
+
+/* Primera forma normal ***************/
+1FN
+* Ninguna fila está repetida.
+* Cada columna contiene un valor único.
+
+/* Segunda forma normal ***************/
+2FN
+* Sigue las reglas de la primera forma normal.
+* Toda columna que no es CLAVE PRIMARIA es dependiente de la CLAVE PRIMARIA ENTERA.
+
+/* Tercera forma normal ***************/
+2FN
+* Sigue las reglas de la segunda forma normal.
+* Toda columna no primaria (No forma parte de la PRIMARY KEY) no depende de otra columna no prmaria.
