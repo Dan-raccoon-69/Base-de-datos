@@ -85,6 +85,7 @@ En cada tabla se desea:
 
 /* Primera forma normal ***************/
 1FN
+* Cada atributo de cada entidad debe contener solo valores atomicos.
 * Ninguna fila está repetida.
 * Cada columna contiene un valor único.
 
@@ -97,6 +98,40 @@ En cada tabla se desea:
 2FN
 * Sigue las reglas de la segunda forma normal.
 * Toda columna no primaria (No forma parte de la PRIMARY KEY) no depende de otra columna no prmaria.
+
+/* Tipos de Entidades **********************************************************/
+-- De Datos
+ Las entidades de datos son aquellas que alimentan el sistema de información. En ellas se almacenan y se interactúa con los datos.
+
+-- Pivotes
+Las entidades pivotes son las que relacionan la información de 2 o más entidades. Nos ayudan a mantener consistencia e integridad en el sistema y evitan la duplicidad de datos. 
+También suelen llamarse entidades de enlace o asociación.
+Por ejemplo en el proceso de una venta, una entidad pivote puede almacenar la relación de qué y cuántos productos se adquirieron en dicha venta, 
+además de relacionar dichos productos con la información del cliente que los compró.
+
+-- Catálogos
+Los catálogos son entidades que sus registros son una lista o relación ordenada con algún criterio y por tal motivo su información debe estar precargada en el sistema, 
+antes de comenzar a introducir información en el.
+Una lista de códigos postales, colonias, municipios, cuidades o países son un buen ejemplo de entidades cátalogo.
+
+Pasos para normalizar una Base de Datos
+1. Identificar las entidades del sistema.
+2. Identificar los atributos de las entidades.
+3. Identificar las llaves primarias y foráneas.
+4. Asignar una nomenclatura adecuada a las entidades y sus atributos.
+(En BD se utiliza mucho el snake_case, ejemplo: hola_mundo),el nombre de las entidades van en plural por que es una entidad que almacena varios registros, 
+los atributos van en snake_case y singular.
+5. Identificar las entidades pivote del sistema.
+(EP: Entidad Pivote)
+6. Identificar los catálogos del sistema.
+(EP: Entidad Catálogo)
+7. Identificar los tipos de relaciones del sistema.
+8. Crear el Modelo Entidad-Relación del sistema.
+9. Crear el Modelo Relacional de la base de datos del sistema.
+10. Identificar los tipos de dato de los atributos de las entidades del sistema.
+11. Identificar los atributos que puedan ser únicos en el sistema.
+12. Identificar las reglas de negocio (Operaciones CRUD) del sistema.
+
 
 /* RELACIONES *********************************************************************/
 * Las tablas estan relacionadas entre si gracias a las claves primarias y foráneas.
@@ -131,6 +166,9 @@ Con este modelo conseguimos representar de forma grafica la estructura y logica 
 * Ovalos = atributos de la entidad.
 * En cada entidad, su PK va subrayada.
 * Rombo = La relación que hay entre una y otra.
+
+En el modelo Relacional:
+* 2 Palitos significan 1, cuando hay un simbolo parecido al menor que significa muchos, osea seria (1, n), uno a muchos
 
 
 ¿Que es SQL?
